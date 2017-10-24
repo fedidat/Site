@@ -38,6 +38,7 @@ PLUGINS = ['i18n_subsites']
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n']
 }
+
 BOOTSTRAP_THEME = "darkly"
 
 # THEME = "pelican-themes/pelican-blue-1.1"
