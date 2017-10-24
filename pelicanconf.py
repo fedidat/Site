@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Ben Fedidat'
 SITENAME = "Ben's corner"
 SITEURL = ''
+# SITEURL = 'http://fedidat.com/'
 
 PATH = 'content'
 
@@ -20,10 +21,10 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+# LINKS = (('Pelican', 'http://getpelican.com/'),
+#          ('Python.org', 'http://python.org/'),
+#          ('Jinja2', 'http://jinja.pocoo.org/'),
+#          ('You can modify those links in your config file', '#'),)
 
 # Social widget
 SOCIAL = (('linkedin', 'https://www.linkedin.com/in/fedidat'),
@@ -32,7 +33,16 @@ SOCIAL = (('linkedin', 'https://www.linkedin.com/in/fedidat'),
 
 DEFAULT_PAGINATION = 10
 
-THEME = "pelican-themes/pelican-blue-1.1"
+PLUGIN_PATHS = ['pelican-plugins']
+PLUGINS = ['i18n_subsites']
+JINJA_ENVIRONMENT = {
+    'extensions': ['jinja2.ext.i18n']
+}
+BOOTSTRAP_THEME = "darkly"
+
+# THEME = "pelican-themes/pelican-blue-1.1"
+# THEME = "pelican-themes/nice"
+THEME = "pelican-themes/pelican-bootstrap3"
 
 FAVICON = "favicon.ico?"
 

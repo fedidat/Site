@@ -1,90 +1,133 @@
-<!doctype html>
-<html lang="en" itemscope itemtype="http://schema.org/Person">
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-  <meta charset="utf-8">
-  <!-- Site Meta Data -->
-  <title> Ben's corner |  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Ben Fedidat">
+    <title>Tags - Ben's corner</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" href="favicon.ico?" type="image/x-icon">
 
-  <!-- schema.org -->
-  <meta itemprop="name" content="Ben's corner">
-  <meta itemprop="image" content="">
-  <meta itemprop="description" content="">
+    <link href="/favicon.ico?" rel="icon">
 
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-  <!-- Style Meta Data -->
-  <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
 
-  <!-- Feed Meta Data -->
+        <meta name="author" content="Ben Fedidat" />
 
-  <!-- Twitter Feed -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="">
-  <meta name="twitter:image" content="">
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Ben's corner" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Ben's corner"/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="Ben's corner"/>
 
-<meta name="twitter:creator" content="">
-<meta name="twitter:url" content="/tags.html">
-<meta name="twitter:title" content="Ben's corner ~ Tags">
-<meta name="twitter:description" content="Ben's corner ~ Tags du site">
 
-<!-- Facebook Meta Data -->
-<meta property="og:title" content="Ben's corner ~ Tags" />
-<meta property="og:description" content="Ben's corner ~ Tags" />
-<meta property="og:image" content="" />
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.darkly.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
 </head>
-
 <body>
-  <!-- Sidebar -->
-  <aside>
-    <!--<center><a href=""><img id="avatar" src=""></a></center>-->
-    <h1 class="title"><a href="/">Ben's corner</a></h1>
-    <h3>Ben Fedidat</h3>
-    <br>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Ben's corner            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about.html">
+                             About
+                          </a></li>
+                        <li >
+                            <a href="/category/metablog.html">Metablog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="tags">
+        <h1>Tags for Ben's corner</h1>
+        <div class="panel-group" id="accordion">            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-first">first <span class="badge pull-right">1</span></a>
+                    </h4>
+                </div>
+                <div id="collapse-first" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p><span class="categories-timestamp"><time datetime="2017-10-23T16:21:00+03:00">Mon 23 October 2017</time></span> <a href="/first-article.html">First article</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/fedidat"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+    <li class="list-group-item"><a href="https://github.com/fedidat"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Ben Fedidat
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
 
 
-    <nav class="nav">
-      <ul class="list-bare">
-      
-         
-          <li><a class="nav__link" href="/pages/about.html">About</a></li>
-         
-      </ul>
-    </nav>
-
-    <p class="social">
-        <a href="https://www.linkedin.com/in/fedidat" target="_blank" ><img src="/theme/images/icons/linkedin.png"></a>
-        <a href="https://github.com/fedidat" target="_blank" ><img src="/theme/images/icons/github.png"></a>
-    </p>
-
-    <!--
-    <h2>Categories</h2>
-    <ul class="navbar">
-      <li><a href="/category/metablog.html">metablog</a></li>
-    </ul> 
-    -->
-  </aside>
-
-  <!-- Content -->
-  <article>
-<h2>Tags</h2>
-<ul>
-    <li><a href="/tag/first.html">first</li>
-</ul>
-  </article>
-
-  <!-- Footer -->
-  <footer>
-    <p>
-      Blog powered by <a href="http://getpelican.com/">Pelican</a>, 
-      which takes great advantage of <a href="http://python.org">Python</a>.
-      Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
-    </p>
-  </footer>
 
 
 </body>
