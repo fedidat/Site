@@ -45,16 +45,25 @@ BOOTSTRAP_THEME = "darkly"
 # THEME = "pelican-themes/nice"
 THEME = "pelican-themes/pelican-bootstrap3"
 
-FAVICON = "favicon.ico?"
+FAVICON = "favicon.png?"
+
+DISQUS_SITENAME = 'fedidat'
+DISQUSURL = 'http://fedidat.com'
+
+CC_LICENSE = True
 
 STATIC_PATHS = [
     'images', 
     'extra/robots.txt', 
-    'extra/favicon.ico'
+    'extra/favicon.png',
+    'extra/CNAME', 
+    'extra/README.md'
 ]
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
-    'extra/favicon.ico': {'path': 'favicon.ico'}
+    'extra/favicon.png': {'path': 'favicon.png'},
+    'extra/CNAME': {'path': 'CNAME'},
+    'extra/README.md': {'path': 'README.md'}
 }
 
 # Uncomment following line if you want document-relative URLs when developing

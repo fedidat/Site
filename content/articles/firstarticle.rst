@@ -3,7 +3,7 @@ First article
 
 :date: 2017-10-23 16:21
 :modified: 2017-10-23 16:21
-:tags: first
+:tags: first, metablog
 :category: metablog
 :slug: first-article
 :authors: Ben Fedidat

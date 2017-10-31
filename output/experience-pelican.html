@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>First article - Ben's corner</title>
+    <title>My experience with Pelican - Ben's corner</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,20 +10,20 @@
 
     <link href="/favicon.png?" rel="icon">
 
-<link rel="canonical" href="/first-article.html">
+<link rel="canonical" href="/experience-pelican.html">
 
         <meta name="author" content="Ben Fedidat" />
-        <meta name="keywords" content="first,metablog" />
-        <meta name="description" content="My blog&#39;s first article" />
+        <meta name="keywords" content="pelican,metablog" />
+        <meta name="description" content="Describing my experience setting up this website with Pelican" />
 
         <meta property="og:site_name" content="Ben's corner" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="First article"/>
-        <meta property="og:url" content="/first-article.html"/>
-        <meta property="og:description" content="My blog&#39;s first article"/>
-        <meta property="article:published_time" content="2017-10-23" />
-            <meta property="article:section" content="metablog" />
-            <meta property="article:tag" content="first" />
+        <meta property="og:title" content="My experience with Pelican"/>
+        <meta property="og:url" content="/experience-pelican.html"/>
+        <meta property="og:description" content="Describing my experience setting up this website with Pelican"/>
+        <meta property="article:published_time" content="2017-10-24" />
+            <meta property="article:section" content="web" />
+            <meta property="article:tag" content="pelican" />
             <meta property="article:tag" content="metablog" />
             <meta property="article:author" content="Ben Fedidat" />
 
@@ -60,10 +60,10 @@ Ben's corner            </a>
                          <li><a href="/pages/about.html">
                              About
                           </a></li>
-                        <li class="active">
+                        <li >
                             <a href="/category/metablog.html">Metablog</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="/category/web.html">Web</a>
                         </li>
             </ul>
@@ -82,10 +82,10 @@ Ben's corner            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="/first-article.html"
+                    <a href="/experience-pelican.html"
                        rel="bookmark"
-                       title="Permalink to First article">
-                        First article
+                       title="Permalink to My experience with Pelican">
+                        My experience with Pelican
                     </a>
                 </h1>
             </header>
@@ -95,7 +95,7 @@ Ben's corner            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2017-10-23T16:21:00+03:00"> Mon 23 October 2017</time>
+        <i class="fa fa-calendar"></i><time datetime="2017-10-24T16:30:00+03:00"> Tue 24 October 2017</time>
     </span>
 
 
@@ -103,14 +103,85 @@ Ben's corner            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="/tag/first.html">first</a>
+	<a href="/tag/pelican.html">pelican</a>
         /
 	<a href="/tag/metablog.html">metablog</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>Hello everyone, this is my first article. Essentially just a test.</p>
-<p>Pelican requires quite a bit of boilerplate code and setup...</p>
+                <p>I just set up this website as a static site generator with Pelican.
+It's rather easy to use, although it has its quirks.</p>
+<p>First of all, if you're thinking about setting up a site with Pelican,
+you may want to think about alternatives. Notably, Jekyll builds on Ruby, it is
+very well supported by Github itself. Others includes Octopress (originally
+built onto Jekyll to add features and simplicity, now a framework of its own),
+Hexo (NodeJS) or Hugo (Golang).</p>
+<p>Ultimately, I chose Pelican because I have some experience with Python
+and thought this may ease the configuration and maintainance.
+If you prefer something else, you can a static site generators for just about any
+(interpreted) language.</p>
+<div class="section" id="installing-and-setting-up">
+<h2>Installing and setting up</h2>
+<p>Basically, I started by installing it using:</p>
+<pre class="literal-block">
+sudo apt-get install pelican
+</pre>
+<p><a class="reference external" href="http://docs.getpelican.com/en/3.7.1/install.html">The official guide</a> advises
+setting up a virtalenv and installing through pip but it will probably work
+fine for you without that.</p>
+<p>After that, I made a new website with <tt class="docutils literal"><span class="pre">pelican-quickstart</span></tt>. This sets up the folder
+tree, as well as some files for the generator. Your filer will look like this:</p>
+<pre class="literal-block">
+yourproject/
+├── content
+│   └── (pages)
+├── output
+├── develop_server.sh
+├── fabfile.py
+├── Makefile
+├── pelicanconf.py       # Main settings file
+└── publishconf.py       # Settings to use when ready to publish
+</pre>
+</div>
+<div class="section" id="format">
+<h2>Format</h2>
+<p>At this point, you will want to decide what kind of markup tool you want to use
+in order to write your articles. Pelican supports two formats:</p>
+<ul class="simple">
+<li>Markdown (.md): The consensus online seems to be that Markdown is well supported
+accross many platforms but is a loosely-defined standard. This leads to some
+inconsistencies and quirks but an otherwise smoother experience.</li>
+<li>reStrcturedText, on the other hand, is a well-defined standard with one large
+implementation (Python Sphinx). It is however sometimes more verbose and less
+commonplace, so you will find some missing features.
+Note that Python's own docutils use rST.</li>
+</ul>
+<p>Ultimately, these criteria didn't matter to me so I went ahead with Pelican's
+default format, which is rST.</p>
+</div>
+<div class="section" id="static-files">
+<h2>Static files</h2>
+<p>I recommend you to create an additional folder named <tt class="docutils literal">extra</tt> inside the content
+folder, where you will place files that you want to later transfer to specific
+locations within your site. This includes, among others:</p>
+<ul class="simple">
+<li>Favicons</li>
+<li>robots.txt</li>
+<li>CNAME if you use Github pages with a custom domain like me</li>
+<li>README.txt</li>
+</ul>
+<p>disqus: simply saying the disqus url didn't work, i followed
+<a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3/issues/219">https://github.com/DandyDev/pelican-bootstrap3/issues/219</a></p>
+<p>pelican-bootstrap3: i18n-sub was missing, specific bootstrap theme (pelicanconf.py)</p>
+<p>python: don't have to use (pretty much), but nice to know, run locally</p>
+<p>pelican: just run &quot;make devserver&quot;, regenerates, link to docs</p>
+<p>github pages: ghp-import, push, settings (specify custom domain, master branch),
+separate repo for whole site</p>
+<p>restructuredtext vs markdown</p>
+<p>pelican plugins</p>
+<p>favicon: generated it, recommend 32px</p>
+<p>V extra folder with links to images/robots.txt/favicon/README (root stuff)</p>
+</div>
 
             </div>
             <!-- /.entry-content -->
@@ -123,8 +194,8 @@ Ben's corner            </a>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'fedidat'; // required: replace example with your forum shortname
 
-                    var disqus_identifier = 'first-article';
-                var disqus_url = 'http://fedidat.com/first-article.html';
+                    var disqus_identifier = 'experience-pelican';
+                var disqus_url = 'http://fedidat.com/experience-pelican.html';
 
             var disqus_config = function () {
                 this.language = "en";
