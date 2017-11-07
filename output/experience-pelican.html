@@ -109,28 +109,35 @@ Ben's corner            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>I just set up this website as a static site generator with Pelican.
-It's rather easy to use, although it has its quirks.</p>
-<p>First of all, if you're thinking about setting up a site with Pelican,
-you may want to think about alternatives. Notably, Jekyll builds on Ruby, it is
-very well supported by Github itself. Others includes Octopress (originally
+                <p>I just set up this website with Pelican, a static site generator, on Github Pages.
+It's rather easy to use, although it has its quirks. I'll walk you through
+the entire process.</p>
+<p>First of all, if you're thinking about setting up a site with
+<a class="reference external" href="http://docs.getpelican.com/en/stable/">Pelican</a>,
+you may want to think about alternatives. Notably, Jekyll builds on Ruby and it is
+very well supported by Github itself. Other choices include Octopress (originally
 built onto Jekyll to add features and simplicity, now a framework of its own),
 Hexo (NodeJS) or Hugo (Golang).</p>
 <p>Ultimately, I chose Pelican because I have some experience with Python
 and thought this may ease the configuration and maintainance.
-If you prefer something else, you can a static site generators for just about any
-(interpreted) language.</p>
+If you would prefer something else, you can find static site generators for just
+about any (interpreted) language.</p>
+<p>Either way, the language doesn't really matter. The point of a static site
+generator is to just write markup and have the site ready. But you may
+feel more confortable customizing some things like the theme in your language.</p>
+<p>Keep in mind that if you feel like migrating to another static site generator,
+you just have to prepare the new boilerplate and migrate the content, which
+should be relatively painless. So whatever you choose, you can't go wrong.</p>
 <div class="section" id="installing-and-setting-up">
-<h2>Installing and setting up</h2>
-<p>Basically, I started by installing it using:</p>
-<pre class="literal-block">
-sudo apt-get install pelican
-</pre>
+<h2>Installing and setting up<a class="headerlink" href="#installing-and-setting-up" title="Permalink to this headline">*</a></h2>
+<p>Basically, I started by installing Pelican using:</p>
+<div class="highlight"><pre>sudo apt-get install pelican
+</pre></div>
 <p><a class="reference external" href="http://docs.getpelican.com/en/3.7.1/install.html">The official guide</a> advises
 setting up a virtalenv and installing through pip but it will probably work
 fine for you without that.</p>
-<p>After that, I made a new website with <tt class="docutils literal"><span class="pre">pelican-quickstart</span></tt>. This sets up the folder
-tree, as well as some files for the generator. Your filer will look like this:</p>
+<p>After that, I started a new website with <tt class="docutils literal"><span class="pre">pelican-quickstart</span></tt>. This sets up the folder
+tree, as well as some files for the generator. Your folder will look like this:</p>
 <pre class="literal-block">
 yourproject/
 ├── content
@@ -142,26 +149,65 @@ yourproject/
 ├── pelicanconf.py       # Main settings file
 └── publishconf.py       # Settings to use when ready to publish
 </pre>
+<p>Note in particular pelicanconf.py. This is the most important file and it controls just
+about every setting of your website, as we'll see later on.</p>
+<p>Now, you should create content/pages/about.rst and write some hello world.
+Then, run <tt class="docutils literal">make devserver</tt> in the project's root folder (this is a very
+handy script that regenerates your website after every change and keeps it
+deployed and serving).
+You should now be able to browse your site at <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a>.</p>
 </div>
 <div class="section" id="format">
-<h2>Format</h2>
+<h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">*</a></h2>
 <p>At this point, you will want to decide what kind of markup tool you want to use
 in order to write your articles. Pelican supports two formats:</p>
 <ul class="simple">
 <li>Markdown (.md): The consensus online seems to be that Markdown is well supported
-accross many platforms but is a loosely-defined standard. This leads to some
+accross many platforms but is a loosely-defined standard. This may lead to some
 inconsistencies and quirks but an otherwise smoother experience.</li>
 <li>reStrcturedText, on the other hand, is a well-defined standard with one large
-implementation (Python Sphinx). It is however sometimes more verbose and less
-commonplace, so you will find some missing features.
+implementation, Python Sphinx. It is however much less commonplace and
+sometimes more verbose, so you will find some missing features.
 Note that Python's own docutils use rST.</li>
 </ul>
 <p>Ultimately, these criteria didn't matter to me so I went ahead with Pelican's
-default format, which is rST.</p>
+default format, which is rST. For the moment.</p>
+<p>Note that writing anything that the rST parser doesn't like
+in the markup may crash the <tt class="docutils literal">make devserver</tt>, and you
+will have to run the command again after fixing the mistake, which is annoying.</p>
+<p>You can find a more in-depth discussion of the subject of markup formats in Python
+<a class="reference external" href="https://coderwall.com/p/vemncg/what-is-the-difference-rest-docutils-sphinx-readthedocs">here</a></p>
+</div>
+<div class="section" id="themes">
+<h2>Themes<a class="headerlink" href="#themes" title="Permalink to this headline">*</a></h2>
+<p>The default Pelican theme, simply named <tt class="docutils literal">theme</tt>, looks alright, but not quite
+good. You can find many themes on the
+<a class="reference external" href="https://github.com/getpelican/pelican-themes/">pelican-themes repo</a>.
+I picked pelican-bootstrap, which is based on Twitter Bootstrap 3 and allows you to
+import thousands of Bootstrap themes.</p>
+<p>Setting up a Pelican theme is simple: download it from Github, put it in a
+<tt class="docutils literal"><span class="pre">pelican-themes</span></tt> folder within the project root, then point to it from
+within <tt class="docutils literal">pelicanconf.py</tt> using in this example:</p>
+<div class="highlight"><pre><span class="n">THEME</span> <span class="o">=</span> <span class="s2">&quot;pelican-themes/pelican-bootstrap3&quot;</span>
+</pre></div>
+<p>Furthermore, because this theme supports internationalization (i18n), you have
+to enable the i18n Pelican plugin in pelicanconf.py, like so:</p>
+<div class="highlight"><pre><span class="n">PLUGIN_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pelican-plugins&#39;</span><span class="p">]</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;i18n_subsites&#39;</span><span class="p">]</span>
+<span class="n">JINJA_ENVIRONMENT</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;extensions&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;jinja2.ext.i18n&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<p>For the bootstrap-theme, pick one on one of the many websites featuring them,
+notably <a class="reference external" href="https://bootswatch.com/">Bootswatch</a>
+or <a class="reference external" href="https://startbootstrap.com/">StartBootstrap</a>.</p>
+<p>The themes on Bootswatch already come with pelican-bootstrap3, under static/css.
+You can apply any bootstrap-(theme).[min.].css by adding
+<tt class="docutils literal">BOOTSTRAP_THEME = &quot;darkly&quot;</tt> to your pelicanconf.py.</p>
 </div>
 <div class="section" id="static-files">
-<h2>Static files</h2>
-<p>I recommend you to create an additional folder named <tt class="docutils literal">extra</tt> inside the content
+<h2>Static files<a class="headerlink" href="#static-files" title="Permalink to this headline">*</a></h2>
+<p>I recommend you create an additional folder named <tt class="docutils literal">extra</tt> inside the content
 folder, where you will place files that you want to later transfer to specific
 locations within your site. This includes, among others:</p>
 <ul class="simple">
@@ -170,51 +216,65 @@ locations within your site. This includes, among others:</p>
 <li>CNAME if you use Github pages with a custom domain like me</li>
 <li>README.txt</li>
 </ul>
-<p>disqus: simply saying the disqus url didn't work, i followed
-<a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3/issues/219">https://github.com/DandyDev/pelican-bootstrap3/issues/219</a></p>
-<p>pelican-bootstrap3: i18n-sub was missing, specific bootstrap theme (pelicanconf.py)</p>
-<p>python: don't have to use (pretty much), but nice to know, run locally</p>
-<p>pelican: just run &quot;make devserver&quot;, regenerates, link to docs</p>
-<p>github pages: ghp-import, push, settings (specify custom domain, master branch),
-separate repo for whole site</p>
-<p>restructuredtext vs markdown</p>
-<p>pelican plugins</p>
-<p>favicon: generated it, recommend 32px</p>
-<p>V extra folder with links to images/robots.txt/favicon/README (root stuff)</p>
+<p>You then have to specify each path in pelicanconf.py so that Pelican
+knows what to do with them, for example:</p>
+<div class="highlight"><pre><span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;images&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;extra/robots.txt&#39;</span>
+<span class="p">]</span>
+<span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;extra/robots.txt&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;robots.txt&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="disqus">
+<h2>Disqus<a class="headerlink" href="#disqus" title="Permalink to this headline">*</a></h2>
+<p>In order to generate the Disqus section at the bottom of each article,
+you must first have a Disqus account. You can open one that is free
+for personal use or organizations. Just try to do it before uploading,
+as it's rather annoying to have it load every time you refresh while writing.</p>
+<p>After creating an account, specify <tt class="docutils literal">DISQUS_SITENAME = '[site name]'</tt> in pelicanconf.py.
+That should do it (except if you use pelican-bootstrap3.  It will probably not work and
+you will have to follow
+<a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3/issues/219#issuecomment-129460703">this</a>).</p>
+</div>
+<div class="section" id="plugins">
+<h2>Plugins<a class="headerlink" href="#plugins" title="Permalink to this headline">*</a></h2>
+<p>Pelican has quite the variety of plugins. You can find a lot of them on
+the <a class="reference external" href="https://github.com/getpelican/pelican-plugins">pelican-plugins</a> repo.
+Notably editors, fields and various automation plugins.</p>
+</div>
+<div class="section" id="deploying-to-github-pages">
+<h2>Deploying to Github Pages<a class="headerlink" href="#deploying-to-github-pages" title="Permalink to this headline">*</a></h2>
+<p>Using Github Pages with Pelican is nice, and it's free.</p>
+<p>First of all, you have to create the repo that will contain your website.
+Since you probably intend to use Github user pages, you have to create your
+user repo with the repo name &quot;[Github user].github.io&quot;.
+Then you have to configure it under your repo's settings to use:</p>
+<img alt="configuring gh pages" src="images/pelican-experience/configure-ghpages.png" />
+<p>After that, anytime you want to deploy the output folder to your site, you
+may run these commands from the site root:</p>
+<div class="highlight"><pre>ghp-import output
+git push -f git@github.com:<span class="o">[</span>Github user<span class="o">]</span>/<span class="o">[</span>Github user<span class="o">]</span>.github.io.git gh-pages:master
+</pre></div>
+<p>This copies the output folder to the gh-pages branch, then pushes it to the
+master branch of your user pages repo.</p>
+</div>
+<div class="section" id="custom-domain">
+<h2>Custom domain<a class="headerlink" href="#custom-domain" title="Permalink to this headline">*</a></h2>
+<p>If you intend to use a custom domain, you must first direct it to your Github Pages:</p>
+<img alt="ghpages custom domain" src="images/pelican-experience/ghpages-custom-domain.png" />
+<p>Then you should enter your custom domain in your repo's settings,
+as shown <a class="reference external" href="#deploying-to-github-pages">above</a>. Finally, you will
+need to create a file named CNAME which contains just your domain name, as Github's
+<a class="reference external" href="https://help.github.com/articles/setting-up-a-custom-subdomain/">guide</a> says.
+You can use a <a class="reference external" href="#static-files">static file</a> for this. Or you could install
+<a class="reference external" href="https://github.com/MinchinWeb/minchin.pelican.plugins.cname">this plugin</a> to
+automate it.</p>
 </div>
 
             </div>
             <!-- /.entry-content -->
-    <hr/>
-    <section class="comments" id="comments">
-        <h2>Comments</h2>
-
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'fedidat'; // required: replace example with your forum shortname
-
-                    var disqus_identifier = 'experience-pelican';
-                var disqus_url = 'http://fedidat.com/experience-pelican.html';
-
-            var disqus_config = function () {
-                this.language = "en";
-            };
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function () {
-                var dsq = document.createElement('script');
-                dsq.type = 'text/javascript';
-                dsq.async = true;
-                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-            Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-    </section>
         </article>
     </section>
 
@@ -264,21 +324,6 @@ separate repo for whole site</p>
 <script src="/theme/js/respond.min.js"></script>
 
 
-    <!-- Disqus -->
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'fedidat'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script');
-            s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
-    </script>
-    <!-- End Disqus Code -->
 
 
 </body>

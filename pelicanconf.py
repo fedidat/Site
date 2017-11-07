@@ -5,7 +5,6 @@ from __future__ import unicode_literals
 AUTHOR = 'Ben Fedidat'
 SITENAME = "Ben's corner"
 SITEURL = ''
-# SITEURL = 'http://fedidat.com/'
 
 PATH = 'content'
 
@@ -34,7 +33,8 @@ SOCIAL = (('linkedin', 'https://www.linkedin.com/in/fedidat'),
 DEFAULT_PAGINATION = 10
 
 PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['i18n_subsites']
+PLUGINS = ['i18n_subsites',
+    'headerid']
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n']
 }
@@ -47,21 +47,18 @@ THEME = "pelican-themes/pelican-bootstrap3"
 
 FAVICON = "favicon.png?"
 
-DISQUS_SITENAME = 'fedidat'
+#DISQUS_SITENAME = 'fedidat'
 DISQUSURL = 'http://fedidat.com'
 
 CC_LICENSE = True
 
 STATIC_PATHS = [
     'images', 
-    'extra/robots.txt', 
-    'extra/favicon.png',
-    'extra/CNAME', 
-    'extra/README.md'
+    'extra'
 ]
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
-    'extra/favicon.png': {'path': 'favicon.png'},
+    'images/favicon.png': {'path': 'favicon.png'},
     'extra/CNAME': {'path': 'CNAME'},
     'extra/README.md': {'path': 'README.md'}
 }
