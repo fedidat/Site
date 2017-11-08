@@ -34,16 +34,24 @@ DEFAULT_PAGINATION = 10
 
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['i18n_subsites',
-    'headerid']
+    'headerid',
+    'pelican-ert',
+    'ace_editor']
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n']
 }
+
+ACE_EDITOR_PLUGIN = {}
+
+ERT_WPM = 150
+ERT_FORMAT = '{time}'
 
 BOOTSTRAP_THEME = "darkly"
 
 # THEME = "pelican-themes/pelican-blue-1.1"
 # THEME = "pelican-themes/nice"
 THEME = "pelican-themes/pelican-bootstrap3"
+#THEME = "pelican-themes/theme"
 
 FAVICON = "favicon.png?"
 
@@ -54,13 +62,15 @@ CC_LICENSE = True
 
 STATIC_PATHS = [
     'images', 
-    'extra'
+    'extra',
+    'ace-build'
 ]
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'images/favicon.png': {'path': 'favicon.png'},
     'extra/CNAME': {'path': 'CNAME'},
-    'extra/README.md': {'path': 'README.md'}
+    'extra/README.md': {'path': 'README.md'},
+    'extra/ace-build': {'path': 'ace-build'}
 }
 
 # Uncomment following line if you want document-relative URLs when developing
