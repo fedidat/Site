@@ -105,7 +105,9 @@
     {% endif %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {{ ace_editor }}
+    {% if ACE_EDITOR %}
+        {{ ace_editor }}
+    {% endif %}
 </head>
 <body>
 
