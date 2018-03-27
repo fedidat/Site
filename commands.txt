@@ -1,4 +1,0 @@
-git push -f git@github.com:fedidat/fedidat.github.io.git gh-pages:master
-ghp-import .
-cd output; python -m pelican.server
-cd ..; pelican content -o output -s pelicanconf.py

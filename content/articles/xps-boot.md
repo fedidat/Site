@@ -1,13 +1,11 @@
-My super title
-##############
-
-:date: 2018-03-27 07:52
-:modified: 2018-03-27 07:52
-:tags: linux
-:category: linux
-:slug: xps-boot
-:authors: Ben Fedidat
-:summary: Repairing my Dell XPS 9560 boot after an upgrade
+Title: XPS boot
+Date: 2018-03-27 07:52
+Modified: 2018-03-27 07:52
+Category: linux
+Tags: linux
+Slug: xps-boot
+Authors: Ben Fedidat
+Summary: Repairing my Dell XPS 9560 boot after a BIOS upgrade
 
 On Friday I updated my BIOS because I had been having some audio issues accross my operating systems.
 
