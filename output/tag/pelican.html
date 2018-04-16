@@ -1,281 +1,156 @@
-<!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
-<head>
-    <title>pelican - Ben's corner</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+﻿﻿<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="author" content="Ben Fedidat">
 
 
-    <link href="/favicon.png?" rel="icon">
+        <title>Ben's corner - Tag pelican</title>
 
 
-    <meta name="author" content="Ben Fedidat" />
-    <meta name="keywords" content="pelican" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="/theme/css/style.css">
 
-    <!-- Open Graph tags -->
-        <meta property="og:site_name" content="Ben's corner" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Ben's corner"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Ben's corner"/>
+        <!-- Custom CSS -->
+        	<link rel="stylesheet" href="/theme/css/colors/blue.css" id="colors">
 
+        <!-- Code highlight color scheme -->
+            <link href="/theme/css/code_blocks/darkly.css" rel="stylesheet">
 
 
-    <!-- Bootstrap -->
-        <link rel="stylesheet" href="/theme/css/bootstrap.united.min.css" type="text/css"/>
-    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="Ben's corner">
+	</head>
+	<body>
+		<header id="header">
+			<!-- Container -->
+			<div class="container">
+				<!-- Logo / Mobile Menu -->
+				<div class="five columns">
+					<div id="textlogo">
+						<h1><a href="/">Ben's corner</a></h1>
+					</div>
+				</div>
+						<!-- Navigation
+				================================================== -->
+				<div class="eleven columns">
 
+					<nav id="navigation" class="menu">
+						<ul id="responsive">
 
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="/extra/ace-build/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script><style>td.linenos {
-    display: none;
-}
-
-pre {
-    box-sizing: content-box;
-    padding: 0;
-    border-radius: 0;
-}
-
-.ace_gutter-cell {
-    cursor: pointer;
-}
-
-.ace_layer {
-    height: 100% !important;
-}
-
-.ace-chrome .ace_marker-layer .ace_selection {
-    border-radius: 0;
-}
-
-span.o {
-    display: block;
-}</style><script>var ACE_EDITOR_SCROLL_TOP_MARGIN = 0;var ACE_EDITOR_THEME = 'chrome';var ACE_EDITOR_MAXLINES = 50;var ACE_EDITOR_READONLY = true;var ACE_EDITOR_AUTOSCROLL = true;var ACE_EDITOR_SHOW_INVISIBLE = true;var Range = ace.require("ace/range").Range;
-
-var editor_array = {};
-
-var correlationDic = {
-    'bash': 'sh'
-}
-
-// inspiration : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt#A_stricter_parse_function
-filterInt = function (value) {
-  if(/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
-    return Number(value);
-  return NaN;
-}
-
-function linesInAnchor(anchor) {
-  anchorObject = {};
-  anchorObject.first = 0;
-  anchorObject.last = 0;
-  anchorObject.anchor = "";
-  var firstLineIndex = anchor.indexOf("-L");
-  var firstResult = anchor.substring(
-    firstLineIndex + 2
-  );
-  if(filterInt(firstResult)) {
-    anchorObject.first = filterInt(firstResult) - 1;
-    anchorObject.last = anchorObject.first;
-    anchorObject.anchor = anchor.substring(0, firstLineIndex + 2) + firstResult;
-    return anchorObject;
-  }
-  var secondLineIndex = firstResult.indexOf("-L");
-
-  if (!filterInt(firstResult.substring(0, secondLineIndex))) {
-    return anchorObject;
-  }
-  anchorObject.anchor = anchor.substring(0, firstLineIndex + 2) + firstResult.substring(0, secondLineIndex);
-
-  anchorObject.first = filterInt(firstResult.substring(0, secondLineIndex)) - 1;
-  var secondResult = firstResult.substring(
-    secondLineIndex + 2
-  );
-  if (!filterInt(secondResult)) {
-    anchorObject.last = anchorObject.first;
-    return anchorObject;
-  }
-  anchorObject.last = filterInt(secondResult) - 1;
-  return anchorObject;
-}
-
-var selectionCallback = function (event, editor) {
-    var editor_id = $(editor.container).attr('id');
-    var range = editor.selection.getRange();
-    location.hash = editor_id + '-L' + parseInt(range.start.row + 1);
-    if ($(editor.container).data().hasOwnProperty("id")) {
-        event.preventDefault();
-    }
-    else if (range.start.row != range.end.row) {
-        location.hash += '-L' + parseInt(range.end.row + 1);
-    }
-    $(editor.container).removeData();
-};
-
-$(function() {
-    var $pre_filter = $('pre.highlight');
-    var pre_len = $pre_filter.length;
-    $pre_filter.each(function(item) {
-        var lang = $(this).find("code").attr('class').substring(9);
-        if (lang in correlationDic) {
-            lang = correlationDic[lang];
-        }
-        var one_render = true;
-        var nb_of_lines = $(this).text().search('\n');
-        // avoid the last carriage return
-        $(this).text($(this).text().substring(0, $(this).text().length));
-
-        // Give a unique id on all editor
-        var editor_id = 'editor' + parseInt(item + 1);
-        $(this).attr('id', editor_id);
-        var editor = ace.edit(editor_id);
-        editor_array[editor_id] = editor;
-        editor.setTheme("ace/theme/" + ACE_EDITOR_THEME);
-        editor.setShowInvisibles(ACE_EDITOR_SHOW_INVISIBLE);
-        editor.setOptions({
-            mode: "ace/mode/" + lang,
-            maxLines: ACE_EDITOR_MAXLINES,
-            readOnly: ACE_EDITOR_READONLY,
-            autoScrollEditorIntoView: ACE_EDITOR_AUTOSCROLL
-        });
-        editor.$blockScrolling = Infinity;
-        if (nb_of_lines === -1) {
-            editor.renderer.setShowGutter(false);
-        }
-
-        editor.renderer.on("afterRender", function(event) {
-            var anchor = linesInAnchor(location.hash);
-            var hash_editor = location.hash.substring(1, location.hash.indexOf("-"));
-            var line = $($(editor.container).find(".ace_gutter-cell")[parseInt(editor_id.substring(6))]);
-            if (hash_editor == editor_id && one_render) {
-                var offset = line.offset();
-                if (offset) {
-                    $(document).scrollTop(offset.top - ACE_EDITOR_SCROLL_TOP_MARGIN);
-                    editor.selection.setRange(new Range(
-                        anchor.first, 0, anchor.last,  Number.MAX_VALUE)
-                    );
-                    one_render = false;
-                }
-            }
-        });
-
-        editor.resize(true);
-        editor.selection.on("changeSelection", function(event) {
-            selectionCallback(event, editor);
-        });
-    });
-
-    $(".ace_gutter-cell").on("click", function(event) {
-        var editor_id = $(this).closest('pre.ace_editor').attr('id');
-        var editor = editor_array[editor_id];
-        var line = parseInt($(this).text()) - 1;
-        editor.selection.setRange(new Range(line, 0, line, Number.MAX_VALUE));
-        $(this).closest('.ace_editor').data({'id': parseInt($(this).text())});
-        selectionCallback(event, editor);
-    });
-});</script>
-</head>
-<body>
-
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="/" class="navbar-brand">
-Ben's corner            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                         <li><a href="/pages/about.html">
-                             About
-                          </a></li>
-                        <li >
-                            <a href="/category/linux.html">Linux</a>
-                        </li>
-                        <li >
-                            <a href="/category/metablog.html">Metablog</a>
-                        </li>
-                        <li >
-                            <a href="/category/web.html">Web</a>
-                        </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-</div> <!-- /.navbar -->
-<!-- Banner -->
-<!-- End Banner -->
-<div class="container">
-    <div class="row">
-        <div class="col-sm-9">
-            <article>
-                <h2><a href="/experience-pelican.html">My experience with Pelican</a></h2>
-                <div class="summary"><p class="first last">Describing my experience setting up this website with Pelican</p>
-
-                    <a class="btn btn-default btn-xs" href="/experience-pelican.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-
-        </div>
-        <div class="col-sm-3" id="sidebar">
-            <aside>
-<!-- Sidebar -->
-<section class="well well-sm">
-  <ul class="list-group list-group-flush">
-
-<!-- Sidebar/Social -->
-<li class="list-group-item">
-  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-  <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="https://www.linkedin.com/in/fedidat"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-    <li class="list-group-item"><a href="https://github.com/fedidat"><i class="fa fa-github-square fa-lg"></i> github</a></li>
-  </ul>
-</li>
-<!-- End Sidebar/Social -->
-  </ul>
-</section>
-<!-- End Sidebar -->            </aside>
-        </div>
-    </div>
-</div>
-<footer>
-   <div class="container">
-      <hr>
-      <div class="row">
-         <div class="col-xs-10">&copy; 2017 Ben Fedidat
-            &middot; Powered by <a href="http://docs.getpelican.com/" target="_blank">Pelican</a> (Python) and
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>.         </div>
-         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
-      </div>
-   </div>
-</footer>
-<script src="/theme/js/jquery.min.js"></script>
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/theme/js/bootstrap.min.js"></script>
-
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="/theme/js/respond.min.js"></script>
+							<li><a href="/">Home</a></li>
 
 
+							        <li><a href="/pages/about.html">About</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- Container / End -->
+		</header>
+		<!-- Header / End -->
 
+		<!-- Breadcrumbs Container-->
+		<div id="content-wrapper">
+			<section id="titlebar">
+				<!-- Container -->
+				<div class="container">
+				<div class="thirteen columns">
+					<nav id="breadcrumbs">
+						<ul>
+							<li>You are here:</li>
+							<li><a href="/">Home</a></li>
+<li><a href="/tags.html">Tags</a></li>
+<li>pelican</li>
+						</ul>
+					</nav>
+				</div>
+				</div>
+				<!-- Container / End -->
+			</section>
 
-</body>
+			<div class="container">
+	<div class="twelve alt columns">
+		<!-- Post -->
+		<article class="post medium">
+			<div class="twelve columns">
+				<section class="post-content">
+					<header class="meta">
+						<h2><a href="/experience-pelican.html" rel="bookmark" title="Permalink to My experience with Pelican">My experience with Pelican</a></h2>
+						<ul>
+							<li>By <a href="/author/ben-fedidat.html">Ben Fedidat</a></li>
+							<li>Tue 24 October 2017</li>
+							<li><a href="/category/web">web</a></li>
+						</ul>
+					</header>
+					<p>
+							<p class="first last">Describing my experience setting up this website with Pelican</p>
+
+	        		</p>
+					<a href="/experience-pelican.html" class="button color">Read More</a>
+				</section>
+			</div>
+			<div class="clearfix"></div>
+		</article>
+
+	<!-- Pagination -->
+	<nav class="pagination">
+		<ul>
+			<li>
+			</li>
+			<!-- Page 1 / 1 -->
+		</ul>
+		<div class="clearfix"></div>
+	</nav>
+	</div>
+
+	<!-- Sidebar -->
+	<div class="four columns">
+
+		
+	</div>
+			</div>
+			<!-- Container / End -->
+		</div>
+		<!-- Content Wrapper / End -->
+
+		<div id="footer-bottom">
+			<!-- Container -->
+			<div class="container">
+				<div class="eight columns">&copy;  || Blog powered by <a href="http://getpelican.com">Pelican</a></div>
+					<div class="eight columns">
+						<ul class="social-icons-footer">
+								<li>
+									<a href="https://www.linkedin.com/in/fedidat" class="tooltip top" title="linkedin">
+										<i class="icon-linkedin"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://github.com/fedidat" class="tooltip top" title="github">
+										<i class="icon-github"></i>
+									</a>
+								</li>
+							<li><a href="/None" class="tooltip top" title="RSS"><i class="icon-rss"></i></a></li>
+						</ul>
+					</div>
+			</div>
+			<!-- Container / End -->
+		</div>
+		<!-- Footer Bottom / End -->
+
+	<!-- Javascripts -->
+	<script src="/theme/js/jquery.min.js"></script>
+	</body>
 </html>

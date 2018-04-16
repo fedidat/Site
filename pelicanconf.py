@@ -48,9 +48,9 @@ ERT_FORMAT = '{time}'
 
 BOOTSTRAP_THEME = "united"
 
-# THEME = "pelican-themes/pelican-blue-1.1"
-# THEME = "pelican-themes/nice"
-THEME = "pelican-themes/pelican-bootstrap3"
+#THEME = "pelican-themes/pelican-blue-1.1"
+THEME = "pelican-themes/nice"
+#THEME = "pelican-themes/pelican-bootstrap3"
 #THEME = "pelican-themes/theme"
 
 FAVICON = "favicon.png?"
@@ -59,7 +59,7 @@ FAVICON = "favicon.png?"
 DISQUSURL = 'http://fedidat.com'
 
 # CC_LICENSE = True
-ACE_EDITOR = True
+ACE_EDITOR = False
 
 STATIC_PATHS = [
     'images', 
